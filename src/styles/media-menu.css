@@ -1,0 +1,27 @@
+.media-menu {
+  background: #423d3d;
+  padding: 16px 0;
+  position: fixed;
+  top: 2rem;
+  right: 5.5rem; 
+  border-radius: 10px;
+}
+.media-menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.media-menu a {
+  color: #fff;
+  margin: 32px;
+  text-decoration: none;
+  font-size: 1.1rem;
+
+  transition: color 0.2s, font-size 0.2s;
+}
+.media-menu a:hover {
+  color: #6a0000;
+  font-size: 1.2rem;
+}
