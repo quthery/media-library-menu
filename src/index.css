@@ -1,18 +1,37 @@
+
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-image: url("../public/blackhole.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("../public/blackhole.jpg") center center / cover no-repeat;
+  padding: 0;
+}
+
+
+.zoom-bg {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background: url("../public/blackhole.jpg") center center / cover no-repeat;
+  transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.zoom-bg.zoomed {
+  transform: scale(3);
+}
+.zoom-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
 }
 
 a {
@@ -26,10 +45,9 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {

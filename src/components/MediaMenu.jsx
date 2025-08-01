@@ -1,4 +1,6 @@
-import React from 'react';
+
+
+import React, { useState } from 'react';
 import '@styles/media-menu.css';
 
 const services = [
@@ -10,16 +12,52 @@ const services = [
 ];
 
 const MediaMenu = () => {
+  const [showVideo, setShowVideo] = useState(false);
+  const onClick = (service) => (e) => {
+    e.preventDefault();
+    setTimeout(() => {
+      setShowVideo(true);
+      if (service.link && service.link !== '#') {
+        window.location.href = `http://${service.link}`;
+      }
+    }, 1000);
+  };
   return (
-    <nav className="media-menu">
-      <ul>
-        {services.map((service) => (
-          <li key={service.name}>
-            <a href={service.link}>{service.name}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      {showVideo && (
+        <video
+          src="/animation.mp4"
+          autoPlay
+          muted
+          loop
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            objectFit: 'cover',
+            zIndex: -1,
+            zIndex: -1,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+      <nav className="media-menu">
+        <ul>
+          {services.map((service) => (
+            <li key={service.name}>
+              <a
+                href={service.link === '#' ? '#' : `http://${service.link}`}
+                onClick={onClick(service)}
+              >
+                {service.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };
 
